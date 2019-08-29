@@ -61,6 +61,11 @@ async function getTablesReady() {
     });
 
     tables.html(out);
+    dataObject.tables.forEach(obj => {
+        let x = document.getElementById(obj.id);
+        x.addEventListener("dragstart", drag, false);
+        x.draggable = "true";
+    })
 }
 
 function allowDrop(e) {
