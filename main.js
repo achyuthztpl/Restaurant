@@ -29,8 +29,9 @@ async function getMenuReady() {
     </div>`;
 
     dataObject.items.forEach(obj => {
+        // draggable="true" ondragstart="drag(event)"
         out += `<div class="col s6 m4">
-            <div id="${obj.id}" class="card-panel" draggable="true" ondragstart="drag(event)">
+            <div id="${obj.id}" class="card-panel item">
                 <span class="food-type">${obj.type}</span>
                 <h5>${obj.name}</h5>
                 <span>Rs.${obj.cost}</span>
@@ -39,6 +40,17 @@ async function getMenuReady() {
     });
 
     menu.html(out);
+
+    dataObject.items.forEach(obj => {
+        $("#" + obj.id).draggable({
+            start: function(event, ui) {
+                $(this).css("z-index", 12);
+            },
+            helper: "clone",
+            cursor: "move",
+            scroll: false
+        });
+    })
 }
 
 async function getTablesReady() {
@@ -52,19 +64,33 @@ async function getTablesReady() {
     </div>`;
 
     dataObject.tables.forEach(obj => {
-        out += `<div class="col s6 m12" id="${obj.id}" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="card-panel">
+        // ondrop="drop(event)" ondragover="allowDrop(event)
+        out += `<div class="col s6 m12">
+            <div class="card-panel table" id="${obj.id}">
                 <h5>${obj.name}</h5>
                 <span>Rs.${obj.total_amount} | Total items: ${obj.items.length}</span>
             </div>
         </div>`;
     });
-
     tables.html(out);
+
     dataObject.tables.forEach(obj => {
-        let x = document.getElementById(obj.id);
-        x.addEventListener("dragstart", drag, false);
-        x.draggable = "true";
+        $("#" + obj.id).droppable({
+            drop: function(event, ui) {
+                console.log($(ui.draggable).attr("id"), $(this).attr("id"))
+                $(this).css("background-color", "")
+            },
+            activeClass: "ui-state-default",
+            hoverClass: "ui-state-hover",
+            accept: ".item",
+            tolerance: "pointer",
+            over: function(event, ui) {
+                $(this).css("background-color", "aliceblue")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+            }
+        });
     })
 }
 
@@ -73,7 +99,8 @@ function allowDrop(e) {
 }
 
 function drag(e) {
-    e.dataTransfer.setData("id", e.target.id);
+    console.log(e)
+        //e.dataTransfer.setData("id", e.target.id);
 }
 
 function drop(e) {
