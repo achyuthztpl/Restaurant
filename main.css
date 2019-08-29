@@ -1,0 +1,58 @@
+.tables,
+.menu {
+    margin-top: 1em;
+}
+
+.tables-screen {
+    height: 100vh;
+    overflow: auto;
+}
+
+.menu-screen {
+    height: 100vh;
+    overflow: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .tables-screen {
+        height: 50vh;
+        overflow: auto;
+    }
+    .menu-screen {
+        height: 50vh;
+        overflow: auto;
+    }
+}
+
+.card-panel {
+    padding: 1.2rem;
+}
+
+.food-type {
+    font-size: 12px;
+}
+
+.food-type+h5 {
+    margin-top: 0.6em;
+}
+
+.search {
+    margin: 0px auto;
+    margin-bottom: 1em;
+    padding: 3px 0.5em;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.search>input {
+    border-radius: 5px;
+    text-align: center;
+}
+
+.close {
+    /* display: none; */
+    position: relative;
+    float: right;
+    margin-top: -2.5em;
+    color: #ef5350;
+}

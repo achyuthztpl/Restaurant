@@ -1,0 +1,130 @@
+{
+    "tables": [{
+            "id": 1,
+            "name": "Table-1",
+            "total_amount": 0,
+            "items": []
+        },
+        {
+            "id": 2,
+            "name": "Table-2",
+            "total_amount": 0,
+            "items": []
+        },
+        {
+            "id": 3,
+            "name": "Table-3",
+            "total_amount": 0,
+            "items": []
+        }
+    ],
+    "items": [{
+            "id": 1001,
+            "type": "starters",
+            "name": "Noodles",
+            "cost": 60
+        },
+        {
+            "id": 1002,
+            "type": "starters",
+            "name": "BreadPizza",
+            "cost": 110
+        },
+        {
+            "id": 1003,
+            "type": "starters",
+            "name": "samosa",
+            "cost": 120
+        },
+        {
+            "id": 1004,
+            "type": "starters",
+            "name": "cutlet",
+            "cost": 40
+        },
+        {
+            "id": 1017,
+            "type": "starters",
+            "name": "Manchurian",
+            "cost": 60
+        },
+        {
+            "id": 1018,
+            "type": "starters",
+            "name": "Alu Puri",
+            "cost": 70
+        },
+        {
+            "id": 1005,
+            "type": "maincourse",
+            "name": "chana dal",
+            "cost": 80
+        },
+        {
+            "id": 1006,
+            "type": "maincourse",
+            "name": "Paneer",
+            "cost": 120
+        },
+        {
+            "id": 1007,
+            "type": "maincourse",
+            "name": "Chilly dosa",
+            "cost": 110
+        },
+        {
+            "id": 1008,
+            "type": "maincourse",
+            "name": "plain dosa",
+            "cost": 80
+        },
+        {
+            "id": 1009,
+            "type": "maincourse",
+            "name": "veg curry",
+            "cost": 150
+        },
+        {
+            "id": 1010,
+            "type": "breads",
+            "name": "Roti",
+            "cost": 6
+        },
+        {
+            "id": 1011,
+            "type": "breads",
+            "name": "Butter Nan ",
+            "cost": 20
+        },
+        {
+            "id": 1012,
+            "type": "breads",
+            "name": "chapati",
+            "cost": 25
+        },
+        {
+            "id": 1013,
+            "type": "breads",
+            "name": "plain partha",
+            "cost": 30
+        },
+        {
+            "id": 1014,
+            "type": "deserts",
+            "name": "custard",
+            "cost": 20
+        },
+        {
+            "id": 1015,
+            "type": "deserts",
+            "name": "sevai",
+            "cost": 40
+        },
+        {
+            "id": 1016,
+            "type": "deserts",
+            "name": "Butterscotch Icecream",
+            "cost": 30
+        }
+    ]
+}
