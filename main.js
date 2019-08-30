@@ -12,10 +12,10 @@ $(function() {
         getReady();
     }
 
-    document.addEventListener("touchstart", drag, true);
-    document.addEventListener("touchmove", function() {}, true);
-    document.addEventListener("touchend", drop, true);
-    document.addEventListener("touchcancel", function() {}, true);
+    document.addEventListener("touchstart", drag, false);
+    document.addEventListener("touchmove", function() {}, false);
+    document.addEventListener("touchend", drop, false);
+    document.addEventListener("touchcancel", function() {}, false);
 
 })
 
@@ -35,6 +35,7 @@ function allowDrop(e) {
 
 function drag(e) {
     //console.log(e)
+    console.log(e)
     e.dataTransfer.setData("id", e.target.id);
 }
 
