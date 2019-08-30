@@ -1,10 +1,6 @@
 let dataObject;
 $(function() {
-    $("#modal").modal({
-        onOpenStart: function(event) {
-            console.log(event)
-        }
-    });
+    $("#modal").modal();
     if (!localStorage.getItem("data")) {
         $.getJSON("./data.json", function(data) {
             dataObject = data;
@@ -15,6 +11,24 @@ $(function() {
         dataObject = JSON.parse(localStorage.getItem("data"))
         getReady();
     }
+    var body = document.querySelector('body');
+
+    // attaching each event listener
+    body.addEventListener('touchstart', function(event) {
+        console.log('body start', event);
+    })
+    body.addEventListener('touchend', function(event) {
+        console.log('body end', event);
+    })
+    body.addEventListener('touchmove', function() {
+        console.log('body leaved');
+    })
+    body.addEventListener('touchleave', function() {
+        console.log('body moving end');
+    })
+    body.addEventListener('touchcancel', function(event) {
+        drop(event)
+    })
 })
 
 function getReady() {
@@ -27,6 +41,7 @@ function allowDrop(e) {
 }
 
 function drag(e) {
+    //console.log(e)
     e.dataTransfer.setData("id", e.target.id);
 }
 
@@ -37,7 +52,7 @@ function drop(e) {
     let tableId = e.path[index].id;
     let itemObj = dataObject.items.find(obj => obj.id == itemId);
     let tableObj = dataObject.tables.find(obj => obj.id == tableId);
-    console.log(itemId, index, e.path)
+    //console.log(itemId, index, e.path)
     if (!tableObj.items[itemId])
         tableObj.total_items += 1;
     tableObj.items[itemId] = tableObj.items[itemId] ? tableObj.items[itemId] + 1 : 1;
@@ -64,6 +79,19 @@ function onTableSearchChange() {
         $("#tables-search-close").hide();
     }
     $("#tables-body").html(getTablesBody(searchKey));
+}
+
+function onModalInputChange(event, tableObj) {
+    console.log(event.target.value, tableObj)
+    let itemId = parseInt(event.target.id.slice(2));
+    let newCount = event.target.value;
+    let oldCount = tableObj.items[itemId];
+    let itemCost = getItem(itemId).cost;
+    tableObj.items[itemId] = newCount;
+    tableObj.total_amount += (newCount - oldCount) * itemCost;
+    changeATable(tableObj);
+    updateModalBody(tableObj);
+    localStorage.setItem("data", JSON.stringify(dataObject));
 }
 
 function changeATable(tableObj) {
@@ -104,7 +132,7 @@ function deleteItemFromTable(tableId, itemId) {
 }
 
 function closeSession(tableId) {
-    console.log(event);
+    //console.log(event);
     dataObject.tables.forEach(obj => {
         if (obj.id == tableId) {
             obj.total_items = 0;
@@ -139,14 +167,14 @@ function updateModalBody(tableObj) {
             let item = getItem(itemId);
             let count = tableObj.items[itemId];
             if (!count) continue;
-            console.log(item.cost, count)
+            //console.log(item.cost, count)
             out += `<tr>
                 <td>${index++}</td>
                 <td>${item.name}</td>
                 <td>${item.cost * count}</td>
                 <td>
                     <div class="input-field" >
-                        <input type="number" value="${count}" id="in${itemId}" min=1 required>
+                        <input class="modal-input" type="number" value="${count}" id="in${itemId}" min=1 required>
                         <label class="active" for="in${itemId}">Number of Serving</label>
                     </div>
                 </td>
@@ -163,6 +191,7 @@ function updateModalBody(tableObj) {
     }
     $("#modal-body").html(out);
     $("#close-session").attr("onclick", `closeSession(${tableId})`);
+    $(".modal-input").on("change", (event) => onModalInputChange(event, tableObj));
 }
 
 function openModal(e) {
