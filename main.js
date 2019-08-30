@@ -37,7 +37,10 @@ function allowDrop(e) {
 function drag(e) {
     //console.log(e)
     console.log(e)
+    e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("id", e.target.id);
+    e.dataTransfer.setDragImage(e.target, 0, 0);
+
 }
 
 function drop(e) {
