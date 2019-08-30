@@ -14,21 +14,21 @@ $(function() {
     var body = document.querySelector('body');
 
     // attaching each event listener
-    body.addEventListener('touchstart', function(event) {
-        console.log('body start', event);
-    })
-    body.addEventListener('touchend', function(event) {
-        console.log('body end', event);
-    })
-    body.addEventListener('touchmove', function() {
-        console.log('body leaved');
-    })
-    body.addEventListener('touchleave', function() {
-        console.log('body moving end');
-    })
-    body.addEventListener('touchcancel', function(event) {
-        drop(event)
-    })
+    // body.addEventListener('touchstart', function(event) {
+    //     console.log('body start', event);
+    // })
+    // body.addEventListener('touchend', function(event) {
+    //     console.log('body end', event);
+    // })
+    // body.addEventListener('touchmove', function() {
+    //     console.log('body leaved');
+    // })
+    // body.addEventListener('touchleave', function() {
+    //     console.log('body moving end');
+    // })
+    // body.addEventListener('touchcancel', function(event) {
+    //     drop(event)
+    // })
 })
 
 function getReady() {
