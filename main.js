@@ -11,25 +11,12 @@ $(function() {
         dataObject = JSON.parse(localStorage.getItem("data"))
         getReady();
     }
-    var body = document.querySelector('body');
-
-    // attaching each event listener
-    // body.addEventListener('touchstart', function(event) {
-    //     console.log('body start', event);
-    // })
-    // body.addEventListener('touchend', function(event) {
-    //     console.log('body end', event);
-    // })
-    // body.addEventListener('touchmove', function() {
-    //     console.log('body leaved');
-    // })
-    // body.addEventListener('touchleave', function() {
-    //     console.log('body moving end');
-    // })
-    // body.addEventListener('touchcancel', function(event) {
-    //     drop(event)
-    // })
 })
+
+function resetData() {
+    localStorage.clear();
+    location.reload();
+}
 
 function getReady() {
     getMenuReady();
@@ -237,7 +224,7 @@ function getMenuBody(searchKey) {
 async function getMenuReady() {
     const menu = $("#menu");
     let out = `<div class="col s12">
-        <h6 class="center-align">Menu</h6>
+        <h6 class="center-align" onclick="resetData()">Menu</h6>
         <div class="card-panel search">
             <input id="menu-search" type="text" placeholder="search" style="display: inline">
             <i id="menu-search-close" onclick="clearMenuSearch()" class="tiny material-icons close">close</i>
