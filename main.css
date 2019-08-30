@@ -50,9 +50,51 @@
 }
 
 .close {
-    /* display: none; */
     position: relative;
     float: right;
     margin-top: -2.5em;
     color: #ef5350;
+    display: none;
+    cursor: pointer;
+}
+
+.modal-content-user {
+    padding: 0px;
+}
+
+.modal-head {
+    display: block;
+    background-color: #3d4ead;
+    padding: 1em;
+    color: whitesmoke;
+    font-size: 1.2em
+}
+
+.modal-body {
+    display: block;
+    padding: 1.5em;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.table-head tr th {
+    text-align: center
+}
+
+.empty-table {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.delete {
+    color: #707070
+}
+
+#tables-body {
+    cursor: default;
 }
