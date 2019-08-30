@@ -11,11 +11,12 @@ $(function() {
         dataObject = JSON.parse(localStorage.getItem("data"))
         getReady();
     }
+    let body = document.getElementById("menu-body");
 
-    document.addEventListener("touchstart", drag, false);
-    document.addEventListener("touchmove", function() {}, false);
-    document.addEventListener("touchend", drop, false);
-    document.addEventListener("touchcancel", function() {}, false);
+    body.addEventListener("touchstart", drag, false);
+    body.addEventListener("touchmove", function() {}, false);
+    body.addEventListener("touchend", drop, false);
+    body.addEventListener("touchcancel", function() {}, false);
 
 })
 
