@@ -11,12 +11,12 @@ $(function() {
         dataObject = JSON.parse(localStorage.getItem("data"))
         getReady();
     }
-    let body = document.getElementById("menu-body");
+    // let body = document.getElementById("menu-body");
 
-    body.addEventListener("touchstart", drag, false);
-    body.addEventListener("touchmove", function() {}, false);
-    body.addEventListener("touchend", drop, false);
-    body.addEventListener("touchcancel", function() {}, false);
+    // body.addEventListener("touchstart", drag, false);
+    // body.addEventListener("touchmove", function() {}, false);
+    // body.addEventListener("touchend", drop, false);
+    // body.addEventListener("touchcancel", function() {}, false);
 
 })
 
@@ -37,9 +37,9 @@ function allowDrop(e) {
 function drag(e) {
     //console.log(e)
     console.log(e)
-    e.dataTransfer.effectAllowed = "move";
+        //e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("id", e.target.id);
-    e.dataTransfer.setDragImage(e.target, 0, 0);
+    //e.dataTransfer.setDragImage(e.target, 0, 0);
 
 }
 
