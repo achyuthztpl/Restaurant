@@ -11,6 +11,12 @@ $(function() {
         dataObject = JSON.parse(localStorage.getItem("data"))
         getReady();
     }
+
+    document.addEventListener("touchstart", drag, true);
+    document.addEventListener("touchmove", function() {}, true);
+    document.addEventListener("touchend", drop, true);
+    document.addEventListener("touchcancel", function() {}, true);
+
 })
 
 function resetData() {
